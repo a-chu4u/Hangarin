@@ -30,9 +30,9 @@ class Category (BaseModel):
 
 class Task (BaseModel):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('in_progress', 'In Progress'),
-        ('completed', 'Completed'),
+        ('Pending', 'Pending'),
+        ('In Progress', 'In Progress'),
+        ('Completed', 'Completed'),
     ]
 
     title = models.CharField(max_length=250)
@@ -52,11 +52,11 @@ class Note (BaseModel):
     def __str__(self):
         return f"Note for {self.task.title}"
 
-class Subtask (BaseModel):
+class SubTask (BaseModel):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('in_progress', 'In Progress'),
-        ('completed', 'Completed'),
+        ('Pending', 'Pending'),
+        ('In Progress', 'In Progress'),
+        ('Completed', 'Completed'),
     ]
     parent_task = models.ForeignKey(Task, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)

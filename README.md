@@ -66,7 +66,7 @@
             <b>Email: aleahnana2006@gmail.com</b>
             <br>
             <a href="https://github.com/a-chu4u" target="_blank">
-                <img src="readme_assets/github.png" width="60" alt="GitHub">
+                <img src="readme_assets\github.png" width="60" alt="GitHub">
             </a>
         </td>
 

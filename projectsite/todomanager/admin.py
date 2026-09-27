@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Priority, Category, Task, Note, Subtask
+from .models import Priority, Category, Task, Note, SubTask
 
 # Register your models here.
 @admin.register(Priority)
@@ -14,18 +14,18 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'deadline', 'category', 'priority')
-    list_filter = ('status', 'category', 'priority')
-    search_fields = ('title', 'description')
+    list_display = ('title', 'status', 'deadline', 'category', 'priority',)
+    list_filter = ('status', 'category', 'priority',)
+    search_fields = ('title', 'description',)
 
 @admin.register(Note)
 class NoteAdmin(admin.ModelAdmin):
-    list_display = ('task', 'content', 'created_at')
-    list_filter = ('created_at')
+    list_display = ('task', 'content', 'created_at',)
+    list_filter = ('created_at',)
     search_fields = ('content',)
     
 
-@admin.register(Subtask)
+@admin.register(SubTask)
 class SubtaskAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'parent_task_name')
     list_filter = ('status',)

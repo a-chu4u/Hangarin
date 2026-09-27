@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="content d-flex align-items-center" style="min-height: calc(100vh - 80px);">
+
+    <div class="container">
+
+        <h2 class="page-title text-center mb-4">
+            Home
+        </h2>
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-3">
+                <div class="card card-stats card-warning">
+                    <div class="card-body text-center">
+                        <p class="card-category">Total Tasks</p>
+                        <h4 class="card-title">{{ total_tasks }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-stats card-success">
+                    <div class="card-body text-center">
+                        <p class="card-category">Pending</p>
+                        <h4 class="card-title">{{ pending_tasks }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-stats card-danger">
+                    <div class="card-body text-center">
+                        <p class="card-category">Completed</p>
+                        <h4 class="card-title">{{ completed_tasks }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-stats card-primary">
+                    <div class="card-body text-center">
+                        <p class="card-category">SubTasks</p>
+                        <h4 class="card-title">{{ total_subtasks }}</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-12">
+
+                <div class="card">
+
+                    <div class="card-body text-center">
+
+                        <h4 class="card-title">
+                            Welcome to Hangarin!
+                        </h4>
+
+                        <p class="card-category">
+                            Manage your tasks, subtasks, priorities, categories, and notes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

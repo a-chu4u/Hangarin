@@ -1,65 +1,113 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
 <div class="content">
     <div class="container-fluid">
-        <h4 class="page-title">Home</h4>
+
         <div class="row">
             <div class="col-md-12">
+
                 <div class="card">
+
                     <div class="card-header">
                         <div class="card-title">List of Categories</div>
-                        <div class="card-category">Page Subtitle</div>
                     </div>
+
                     <br />
+
                     <div class="col-md-12 row">
+
+                        <!-- Search -->
                         <div class="col-md-6">
-                            <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'category-list' %}">
+                            <form method="get" action="{% url 'category-list' %}">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Search ..." class="form-control" name="q" />
+
+                                    <input type="text"
+                                           name="q"
+                                           class="form-control"
+                                           placeholder="Search ..."
+                                           value="{{ request.GET.q }}">
+
                                     <div class="input-group-append">
-                                        <span class="input-group-text">
-                                            <i class="la la-search search-icon"></i>
-                                        </span>
+                                        <button type="submit" class="btn btn-primary">
+                                            Search
+                                        </button>
                                     </div>
+
                                 </div>
                             </form>
                         </div>
+
+                        <!-- Add Category -->
                         <div class="col-md-6">
                             <div class="pull-right">
-                                <a href="{% url 'category-add' %}" class="btn btn-success btn-rounded">Add Category</a>
+                                <a href="{% url 'category-add' %}"
+                                   class="btn btn-success btn-rounded">
+                                    Add Category
+                                </a>
                             </div>
                         </div>
+
                     </div>
+
                     <div class="card-body">
+
                         <table class="table table-striped mt-3">
+
                             <thead>
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
+
                             <tbody>
+
                                 {% for object in categories %}
+
                                 <tr>
                                     <td>{{ object.name }}</td>
+
                                     <td>
-                                        <a href="{% url 'category-update' object.id %}">Edit</a>
-                                        <a href="{% url 'category-delete' object.id %}" class="text-danger">Delete</a>
+                                        <a href="{% url 'category-update' object.id %}">
+                                            Edit
+                                        </a>
+
+                                        <a href="{% url 'category-delete' object.id %}"
+                                           class="text-danger">
+                                            Delete
+                                        </a>
                                     </td>
                                 </tr>
+
                                 {% empty %}
+
                                 <tr>
                                     <td colspan="2" style="text-align: center">
-                                        <p class="text-sm font-weight-bold mb-0">No Records Found</p>
+                                        <p class="text-sm font-weight-bold mb-0">
+                                            No Records Found
+                                        </p>
                                     </td>
                                 </tr>
+
                                 {% endfor %}
+
                             </tbody>
+
                         </table>
+
                         {% include 'includes/pagination.html' %}
+
                     </div>
+
                 </div>
+
             </div>
         </div>
+
     </div>
 </div>
+
 {% endblock %}

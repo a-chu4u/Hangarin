@@ -1,0 +1,209 @@
+{% load socialaccount %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign In | Hangarin</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/atlantis.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.min.css' %}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body data-background-color="dark2">
+
+<div class="wrapper">
+
+    <div class="main-panel" style="width: 100%; margin-left: 0;">
+
+        <div class="content">
+
+            <div class="container">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="card">
+
+                            <div class="card-header text-center">
+
+                                <div class="mb-3">
+
+                                    <img src="{% static 'img/cat.jpg' %}"
+                                         alt="Hangarin"
+                                         style="
+                                            width: 70px;
+                                            height: 70px;
+                                            border-radius: 50%;
+                                            object-fit: cover;
+                                         ">
+
+                                </div>
+
+                                <h3 class="card-title mb-1">
+                                    Hangarin
+                                </h3>
+
+                                <p class="text-muted">
+                                    Sign in to your account
+                                </p>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                {% if form.non_field_errors %}
+
+                                    <div class="alert alert-danger">
+                                        {{ form.non_field_errors }}
+                                    </div>
+
+                                {% endif %}
+
+
+                                <form method="post"
+                                      action="{% url 'account_login' %}">
+
+                                    {% csrf_token %}
+
+
+                                    <div class="form-group">
+
+                                        <label for="{{ form.login.id_for_label }}">
+                                            Username or Email
+                                        </label>
+
+                                        {{ form.login }}
+
+                                        {% for error in form.login.errors %}
+
+                                            <small class="text-danger">
+                                                {{ error }}
+                                            </small>
+
+                                        {% endfor %}
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="{{ form.password.id_for_label }}">
+                                            Password
+                                        </label>
+
+                                        {{ form.password }}
+
+                                        {% for error in form.password.errors %}
+
+                                            <small class="text-danger">
+                                                {{ error }}
+                                            </small>
+
+                                        {% endfor %}
+
+                                    </div>
+
+
+
+                                    <button type="submit"
+                                            class="btn btn-primary btn-block">
+
+                                        Sign In
+
+                                    </button>
+
+                                </form>
+
+
+                                <!-- Social Login -->
+
+                                <div class="text-center mt-3">
+
+                                    <p class="text-muted mb-2">
+                                        or continue with
+                                    </p>
+
+
+                                    <!-- Google -->
+
+                                    <a href="{% provider_login_url 'google' %}"
+                                       class="btn btn-danger btn-block mb-2">
+
+                                        <i class="fab fa-google"></i>
+
+                                        Continue with Google
+
+                                    </a>
+
+
+                                    <!-- GitHub -->
+
+                                    <a href="{% provider_login_url 'github' %}"
+                                       class="btn btn-dark btn-block">
+
+                                        <i class="fab fa-github"></i>
+
+                                        Continue with GitHub
+
+                                    </a>
+
+                                </div>
+
+
+                                <div class="text-center mt-3">
+
+                                    <a href="{% url 'account_reset_password' %}">
+
+                                        Forgot your password?
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="card-footer text-center">
+
+                                <p class="mb-0">
+
+                                    Don't have an account?
+
+                                    <a href="{% url 'account_signup' %}">
+                                        Sign Up
+                                    </a>
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

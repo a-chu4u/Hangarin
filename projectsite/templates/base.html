@@ -63,7 +63,8 @@
 
                     <li class="nav-item">
 
-                        <span class="nav-link text-white">
+                        <span class="nav-link text-white"
+                            style="background-color: #001F3F; border-radius: 6px;">
                             {{ request.user.username }}
                         </span>
 
@@ -172,6 +173,22 @@
 
                             <p>
                                 Notes
+                            </p>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- Logout -->
+                    <li class="nav-item">
+
+                        <a href="{% url 'account_logout' %}">
+
+                            <i class="fas fa-sign-out-alt"></i>
+
+                            <p>
+                                Logout
                             </p>
 
                         </a>

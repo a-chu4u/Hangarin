@@ -46,7 +46,6 @@
 
 - 🐍 Python
 - 🌐 Django
-- 🗄️ SQLite
 - 🎲 Faker
 - 🔧 Git
 - 🐙 GitHub

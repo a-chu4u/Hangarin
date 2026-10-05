@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/6.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-o@2nj=)#_daa)s7*qm^g4ik=f$)u1hcq!%dmjo5=8f-2^rz9jg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'achuuuuu.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'achuuuuu.pythonanywhere.com', '192.168.1.7']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'todomanager',
     'widget_tweaks',
+    'pwa',
 ]
 
 SITE_ID = 4
@@ -159,3 +160,53 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+
+# --- Progressive Web App Settings ---
+PWA_APP_NAME = 'Hangarin'
+
+PWA_APP_DESCRIPTION = "A Progressive Web App version of Hangarin"
+
+PWA_APP_THEME_COLOR = '#B2CAED'
+
+PWA_APP_BACKGROUND_COLOR = '#E4F7EE'
+
+PWA_APP_DISPLAY = 'standalone'
+
+PWA_APP_SCOPE = '/'
+
+PWA_APP_ORIENTATION = 'portrait'
+
+PWA_APP_START_URL = '/'
+
+PWA_APP_STATUS_BAR_COLOR = 'default'
+
+PWA_APP_ICONS = [
+    {
+        'src': '/static/img/icon-192.png',
+        'sizes': '192x192'
+    },
+    {
+        'src': '/static/img/icon-512.png',
+        'sizes': '512x512'
+    }
+]
+
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': '/static/img/icon-192.png',
+        'sizes': '192x192'
+    },
+    {
+        'src': '/static/img/icon-512.png',
+        'sizes': '512x512'
+    }
+]
+
+PWA_APP_DIR = 'ltr'
+
+PWA_SERVICE_WORKER_PATH = os.path.join(
+    BASE_DIR,
+    'static/js',
+    'serviceworker.js'
+)

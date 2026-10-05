@@ -19,13 +19,322 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <style>
+
+        /* ================================
+           HANGARIN COLOR PALETTE
+        ================================= */
+
+        :root {
+            --mint-mist: #E4F7EE;
+            --pale-aqua: #C7E9ED;
+            --periwinkle-blue: #B2CAED;
+
+            --text-color: #40566F;
+            --heading-color: #334B63;
+
+            --hover-blue: #91B3E2;
+            --border-color: #C8D9E2;
+        }
+
+
+        /* ================================
+           PAGE
+        ================================= */
+
+        body {
+            background-color: var(--mint-mist);
+            color: var(--text-color);
+        }
+
+
+        /* ================================
+           LOGIN CARD
+        ================================= */
+
+        .login-card {
+            border-radius: 15px;
+            border: none;
+
+            box-shadow: 0 5px 20px rgba(64, 86, 111, 0.10);
+
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+
+
+        /* ================================
+           LOGIN HEADER
+        ================================= */
+
+        .login-header {
+            padding-top: 18px;
+            padding-bottom: 10px;
+
+            background-color: #FFFFFF;
+            border-bottom: none;
+        }
+
+        .cat-logo {
+            width: 65px;
+            height: 65px;
+
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .hangarin-title {
+            color: var(--heading-color);
+            font-weight: 600;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            color: #718096;
+            margin-bottom: 0;
+        }
+
+
+        /* ================================
+           LOGIN BODY
+        ================================= */
+
+        .login-body {
+            padding: 16px 30px 18px;
+
+            background-color: #FFFFFF;
+        }
+
+
+        /* ================================
+           FORM
+        ================================= */
+
+        .form-group {
+            margin-bottom: 13px;
+        }
+
+        .form-group label {
+            color: var(--heading-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+
+        /* ================================
+           TEXT FIELDS
+        ================================= */
+
+        .form-group input {
+            width: 100%;
+            height: 40px;
+
+            padding: 8px 14px;
+
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+
+            background-color: #F8FCFF;
+            color: var(--text-color);
+
+            font-size: 14px;
+
+            box-sizing: border-box;
+
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--hover-blue);
+
+            outline: none;
+
+            background-color: #FFFFFF;
+
+            box-shadow: 0 0 0 2px rgba(178, 202, 237, 0.25);
+        }
+
+        .form-group input::placeholder {
+            color: #8A9AA8;
+        }
+
+
+        /* ================================
+           SIGN IN BUTTON
+        ================================= */
+
+        .signin-button {
+            width: 100%;
+            height: 40px;
+
+            border: none;
+            border-radius: 10px;
+
+            background-color: var(--periwinkle-blue);
+            color: var(--heading-color);
+
+            font-weight: 600;
+            font-size: 15px;
+
+            transition: 0.2s;
+        }
+
+        .signin-button:hover {
+            background-color: var(--hover-blue);
+            color: var(--heading-color);
+        }
+
+
+        /* ================================
+           DIVIDER
+        ================================= */
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+
+            margin: 14px 0;
+
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background-color: var(--border-color);
+        }
+
+        .login-divider span {
+            padding: 0 12px;
+        }
+
+
+        /* ================================
+           SOCIAL BUTTONS
+        ================================= */
+
+        .social-button {
+            width: 100%;
+            height: 40px;
+
+            border-radius: 10px;
+
+            font-weight: 500;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* ================================
+           GOOGLE
+        ================================= */
+
+        .btn-danger {
+            background-color: #DB4437 !important;
+            border-color: #DB4437 !important;
+        }
+
+        .btn-danger:hover {
+            background-color: #C5392D !important;
+            border-color: #C5392D !important;
+        }
+
+
+        /* ================================
+           GITHUB
+        ================================= */
+
+        .btn-dark {
+            background-color: #40566F !important;
+            border-color: #40566F !important;
+        }
+
+        .btn-dark:hover {
+            background-color: #334B63 !important;
+            border-color: #334B63 !important;
+        }
+
+
+        /* ================================
+           FORGOT PASSWORD
+        ================================= */
+
+        .forgot-password {
+            margin-top: 12px;
+        }
+
+        .forgot-password a {
+            color: #4A6F9B;
+        }
+
+        .forgot-password a:hover {
+            color: #315D91;
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        .card-footer {
+            background-color: var(--pale-aqua);
+
+            padding: 12px;
+
+            border-top: none;
+        }
+
+        .card-footer p {
+            color: var(--text-color);
+        }
+
+        .card-footer a {
+            color: #4A6F9B;
+            font-weight: 500;
+        }
+
+        .card-footer a:hover {
+            color: #315D91;
+        }
+
+
+        /* ================================
+           ERROR MESSAGE
+        ================================= */
+
+        .alert-danger {
+            border-radius: 8px;
+        }
+
+
+        /* ================================
+           ERROR TEXT
+        ================================= */
+
+        .text-danger {
+            color: #C45A5A !important;
+        }
+
+    </style>
+
 </head>
 
-<body data-background-color="dark2">
+
+<body>
 
 <div class="wrapper">
 
-    <div class="main-panel" style="width: 100%; margin-left: 0;">
+    <div class="main-panel"
+         style="width: 100%; margin-left: 0;">
 
         <div class="content">
 
@@ -35,34 +344,39 @@
 
                     <div class="col-md-5">
 
-                        <div class="card">
+                        <div class="card login-card">
 
-                            <div class="card-header text-center">
 
-                                <div class="mb-3">
+                            <!-- ================================
+                                 HEADER
+                            ================================= -->
+
+                            <div class="card-header text-center login-header">
+
+                                <div class="mb-2">
 
                                     <img src="{% static 'img/cat.jpg' %}"
                                          alt="Hangarin"
-                                         style="
-                                            width: 70px;
-                                            height: 70px;
-                                            border-radius: 50%;
-                                            object-fit: cover;
-                                         ">
+                                         class="cat-logo">
 
                                 </div>
 
-                                <h3 class="card-title mb-1">
+                                <h3 class="card-title mb-1 hangarin-title">
                                     Hangarin
                                 </h3>
 
-                                <p class="text-muted">
+                                <p class="subtitle">
                                     Sign in to your account
                                 </p>
 
                             </div>
 
-                            <div class="card-body">
+
+                            <!-- ================================
+                                 BODY
+                            ================================= -->
+
+                            <div class="card-body login-body">
 
                                 {% if form.non_field_errors %}
 
@@ -78,6 +392,8 @@
 
                                     {% csrf_token %}
 
+
+                                    <!-- Username / Email -->
 
                                     <div class="form-group">
 
@@ -98,6 +414,8 @@
                                     </div>
 
 
+                                    <!-- Password -->
+
                                     <div class="form-group">
 
                                         <label for="{{ form.password.id_for_label }}">
@@ -117,9 +435,10 @@
                                     </div>
 
 
+                                    <!-- Sign In -->
 
                                     <button type="submit"
-                                            class="btn btn-primary btn-block">
+                                            class="signin-button">
 
                                         Sign In
 
@@ -128,42 +447,52 @@
                                 </form>
 
 
-                                <!-- Social Login -->
+                                <!-- ================================
+                                     DIVIDER
+                                ================================= -->
 
-                                <div class="text-center mt-3">
+                                <div class="login-divider">
 
-                                    <p class="text-muted mb-2">
+                                    <span>
                                         or continue with
-                                    </p>
-
-
-                                    <!-- Google -->
-
-                                    <a href="{% provider_login_url 'google' %}"
-                                       class="btn btn-danger btn-block mb-2">
-
-                                        <i class="fab fa-google"></i>
-
-                                        Continue with Google
-
-                                    </a>
-
-
-                                    <!-- GitHub -->
-
-                                    <a href="{% provider_login_url 'github' %}"
-                                       class="btn btn-dark btn-block">
-
-                                        <i class="fab fa-github"></i>
-
-                                        Continue with GitHub
-
-                                    </a>
+                                    </span>
 
                                 </div>
 
 
-                                <div class="text-center mt-3">
+                                <!-- ================================
+                                     GOOGLE
+                                ================================= -->
+
+                                <a href="{% provider_login_url 'google' %}"
+                                   class="btn btn-danger social-button mb-2">
+
+                                    <i class="fab fa-google mr-1"></i>
+
+                                    Continue with Google
+
+                                </a>
+
+
+                                <!-- ================================
+                                     GITHUB
+                                ================================= -->
+
+                                <a href="{% provider_login_url 'github' %}"
+                                   class="btn btn-dark social-button">
+
+                                    <i class="fab fa-github mr-1"></i>
+
+                                    Continue with GitHub
+
+                                </a>
+
+
+                                <!-- ================================
+                                     FORGOT PASSWORD
+                                ================================= -->
+
+                                <div class="text-center forgot-password">
 
                                     <a href="{% url 'account_reset_password' %}">
 
@@ -175,6 +504,10 @@
 
                             </div>
 
+
+                            <!-- ================================
+                                 FOOTER
+                            ================================= -->
 
                             <div class="card-footer text-center">
 
@@ -189,6 +522,7 @@
                                 </p>
 
                             </div>
+
 
                         </div>
 

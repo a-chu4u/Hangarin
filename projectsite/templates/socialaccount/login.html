@@ -2,6 +2,7 @@
 {% load static %}
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -11,71 +12,225 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Confirm Google Login</title>
+    <title>Confirm Google Login | Hangarin</title>
 
     <link rel="stylesheet"
           href="{% static 'css/bootstrap.min.css' %}">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css">
-
     <style>
 
+        :root {
+            --mint-mist: #E4F7EE;
+            --pale-aqua: #C7E9ED;
+            --periwinkle-blue: #B2CAED;
+
+            --text-color: #40566F;
+            --heading-color: #334B63;
+
+            --hover-blue: #91B3E2;
+            --border-color: #C8D9E2;
+        }
+
+
         body {
+            min-height: 100vh;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            background-color: #f8f9fc;
+
+            margin: 0;
+
+            background-color: var(--mint-mist);
+            color: var(--text-color);
         }
 
+
         .auth-card {
+
+            width: 100%;
             max-width: 500px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
             padding: 2rem;
+
+            background-color: #FFFFFF;
+
+            border: none;
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(64, 86, 111, 0.10);
+
             text-align: center;
         }
+
+
+        .cat-logo {
+
+            width: 65px;
+            height: 65px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            margin-bottom: 12px;
+        }
+
+
+        .auth-title {
+
+            color: var(--heading-color);
+
+            font-size: 26px;
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+
+        .auth-text {
+
+            color: var(--text-color);
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            margin-bottom: 24px;
+        }
+
+
+        .auth-text strong {
+
+            color: var(--heading-color);
+        }
+
+
+        .continue-button {
+
+            width: 100%;
+
+            padding: 10px 15px;
+
+            border: none;
+            border-radius: 10px;
+
+            background-color: var(--periwinkle-blue);
+
+            color: var(--heading-color);
+
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+
+        .continue-button:hover {
+
+            background-color: var(--hover-blue);
+
+            color: var(--heading-color);
+        }
+
+
+        .cancel-button {
+
+            width: 100%;
+
+            padding: 10px 15px;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 10px;
+
+            background-color: #FFFFFF;
+
+            color: var(--text-color);
+
+            font-weight: 500;
+
+            transition: 0.2s;
+        }
+
+
+        .cancel-button:hover {
+
+            background-color: var(--pale-aqua);
+
+            border-color: var(--pale-aqua);
+
+            color: var(--heading-color);
+        }
+
 
     </style>
 
 </head>
 
+
 <body>
+
 
     <div class="auth-card">
 
-        <h3 class="mb-4">
+
+        <!-- Cat Logo -->
+
+        <img src="{% static 'img/cat.jpg' %}"
+             alt="Hangarin"
+             class="cat-logo">
+
+
+        <!-- Title -->
+
+        <h3 class="auth-title">
+
             Confirm Sign In
+
         </h3>
 
-        <p class="mb-3">
+
+        <!-- Message -->
+
+        <p class="auth-text">
+
             You are about to sign in using your
+
             <strong>{{ provider.name }}</strong>
+
             account.
+
         </p>
+
+
+        <!-- Continue -->
 
         <form method="post">
 
             {% csrf_token %}
 
             <button type="submit"
-                    class="btn btn-primary btn-block mb-3">
+                    class="continue-button mb-3">
+
                 Continue with {{ provider.name }}
+
             </button>
 
         </form>
 
+
+        <!-- Cancel -->
+
         <a href="{% url 'account_login' %}"
-           class="btn btn-outline-secondary btn-block">
+           class="cancel-button d-block text-decoration-none">
+
             Cancel
+
         </a>
 
+
     </div>
+
 
 </body>
 

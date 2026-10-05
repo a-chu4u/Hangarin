@@ -19,29 +19,59 @@
 
                     <div class="col-md-12 row">
 
-                        <!-- Search -->
-                        <div class="col-md-6">
+                        <!-- Search and Sort -->
+                        <div class="col-md-8">
                             <form method="get" action="{% url 'subtask-list' %}">
+
                                 <div class="input-group">
 
+                                    <!-- Search -->
                                     <input type="text"
                                            name="q"
                                            class="form-control"
                                            placeholder="Search ..."
                                            value="{{ request.GET.q }}">
 
+                                    <!-- Sort -->
+                                    <select name="sort"
+                                            class="form-control"
+                                            style="max-width: 220px; margin-left: 5px;"
+                                            onchange="this.form.submit()">
+
+                                        <option value="">Sort by</option>
+
+                                        <option value="title"
+                                            {% if request.GET.sort == 'title' %}selected{% endif %}>
+                                            Title 
+                                        </option>
+
+                                        <option value="parent_task"
+                                            {% if request.GET.sort == 'parent_task' %}selected{% endif %}>
+                                            Parent Task 
+                                        </option>
+
+                                        <option value="status"
+                                            {% if request.GET.sort == 'status' %}selected{% endif %}>
+                                            Status 
+                                        </option>
+
+                                    </select>
+
+                                    <!-- Search Button -->
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit"
+                                                class="btn btn-primary">
                                             Search
                                         </button>
                                     </div>
 
                                 </div>
+
                             </form>
                         </div>
 
                         <!-- Add SubTask -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="pull-right">
                                 <a href="{% url 'subtask-add' %}"
                                    class="btn btn-success btn-rounded">

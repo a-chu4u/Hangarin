@@ -9,7 +9,6 @@ from .models import Task, SubTask, Category, Priority, Note
 from .forms import TaskForm, SubTaskForm, CategoryForm, PriorityForm, NoteForm
 
 
-# ---------- HOME / DASHBOARD ----------
 
 class HomePageView(LoginRequiredMixin, ListView):
     model = Task
@@ -25,7 +24,6 @@ class HomePageView(LoginRequiredMixin, ListView):
         return context
 
 
-# ---------- TASK ----------
 
 class TaskList(ListView):
     model = Task
@@ -35,11 +33,28 @@ class TaskList(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
+
         query = self.request.GET.get('q')
+
         if query:
             qs = qs.filter(
-                Q(title__icontains=query) | Q(description__icontains=query)
+                Q(title__icontains=query) |
+                Q(description__icontains=query)
             )
+
+        sort = self.request.GET.get('sort')
+
+        sort_options = {
+            'title': 'title',
+            'status': 'status',
+            'deadline': 'deadline',
+            'priority': 'priority__name',
+            'category': 'category__name',
+        }
+
+        if sort in sort_options:
+            qs = qs.order_by(sort_options[sort])
+
         return qs
 
 
@@ -63,7 +78,6 @@ class TaskDeleteView(DeleteView):
     success_url = reverse_lazy('task-list')
 
 
-# ---------- SUBTASK ----------
 
 class SubTaskList(ListView):
     model = SubTask
@@ -73,9 +87,25 @@ class SubTaskList(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
+
         query = self.request.GET.get('q')
+
         if query:
-            qs = qs.filter(Q(title__icontains=query))
+            qs = qs.filter(
+                Q(title__icontains=query)
+            )
+
+        sort = self.request.GET.get('sort')
+
+        sort_options = {
+            'title': 'title',
+            'parent_task': 'parent_task__title',
+            'status': 'status',
+        }
+
+        if sort in sort_options:
+            qs = qs.order_by(sort_options[sort])
+
         return qs
 
 
@@ -99,7 +129,6 @@ class SubTaskDeleteView(DeleteView):
     success_url = reverse_lazy('subtask-list')
 
 
-# ---------- CATEGORY ----------
 
 class CategoryList(ListView):
     model = Category
@@ -135,7 +164,6 @@ class CategoryDeleteView(DeleteView):
     success_url = reverse_lazy('category-list')
 
 
-# ---------- PRIORITY ----------
 
 class PriorityList(ListView):
     model = Priority
@@ -171,7 +199,6 @@ class PriorityDeleteView(DeleteView):
     success_url = reverse_lazy('priority-list')
 
 
-# ---------- NOTE ----------
 
 class NoteList(ListView):
     model = Note

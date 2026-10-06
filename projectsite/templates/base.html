@@ -2,7 +2,6 @@
 {% load pwa %}
 
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -29,17 +28,13 @@
     <style>
 
         :root {
-
             --mint-mist: #E4F7EE;
             --pale-aqua: #C7E9ED;
             --periwinkle-blue: #B2CAED;
-
             --text-color: #40566F;
             --heading-color: #334B63;
-
             --hover-blue: #91B3E2;
             --border-color: #C8D9E2;
-
         }
 
 
@@ -49,20 +44,15 @@
 
         html,
         body {
-
             background-color: var(--mint-mist) !important;
             color: var(--text-color) !important;
-
         }
-
 
         .wrapper,
         .main-panel,
         .content {
-
             background-color: var(--mint-mist) !important;
             color: var(--text-color) !important;
-
         }
 
 
@@ -75,26 +65,18 @@
         .navbar-header,
         .navbar-header-transparent,
         .logo-header {
-
             background-color: var(--periwinkle-blue) !important;
-
         }
-
 
         .main-header {
-
             border-bottom: 1px solid var(--border-color) !important;
-
         }
-
 
         .logo-header .logo,
         .logo-header .logo span,
         .logo-header .nav-toggle i,
         .logo-header .topbar-toggler i {
-
             color: var(--heading-color) !important;
-
         }
 
 
@@ -105,52 +87,35 @@
         .sidebar,
         .sidebar-wrapper,
         .sidebar-content {
-
             background-color: var(--periwinkle-blue) !important;
-
         }
-
 
         .sidebar .nav-primary .nav-item > a,
         .sidebar .nav-primary .nav-item > a p,
         .sidebar .nav-primary .nav-item > a i {
-
             color: var(--heading-color) !important;
-
         }
-
 
         .sidebar .nav-primary .nav-item > a:hover {
-
             background-color: var(--hover-blue) !important;
             border-radius: 6px;
-
         }
-
 
         .sidebar .nav-primary .nav-item.active > a {
-
             background-color: var(--periwinkle-blue) !important;
             border-radius: 6px;
-
         }
-
 
         .sidebar .nav-primary .nav-item.active > a,
         .sidebar .nav-primary .nav-item.active > a p,
         .sidebar .nav-primary .nav-item.active > a i {
-
             color: var(--heading-color) !important;
-
         }
 
-
         .nav-link.text-white {
-
             background-color: var(--periwinkle-blue) !important;
             color: var(--heading-color) !important;
             border-radius: 6px;
-
         }
 
 
@@ -159,36 +124,25 @@
         ========================= */
 
         .card {
-
             background-color: #FFFFFF !important;
             color: var(--text-color) !important;
             border: none;
             border-radius: 8px;
-
         }
 
-
         .card-header {
-
             background-color: #FFFFFF !important;
             color: var(--heading-color) !important;
             border-bottom: 1px solid var(--border-color);
-
         }
-
 
         .card-title {
-
             color: var(--heading-color) !important;
-
         }
 
-
         .card-body {
-
             background-color: #FFFFFF !important;
             color: var(--text-color) !important;
-
         }
 
 
@@ -202,49 +156,32 @@
         .card-body h4,
         .card-body h5,
         .card-body h6 {
-
             color: var(--heading-color) !important;
-
         }
-
 
         .card-body p,
         .card-body span,
         .card-body small {
-
             color: var(--text-color) !important;
-
         }
-
 
         .text-white {
-
             color: var(--heading-color) !important;
-
         }
-
 
         .card-body h2 {
-
             color: var(--heading-color) !important;
             font-weight: 600 !important;
-
         }
-
 
         .card-body h3 {
-
             color: var(--heading-color) !important;
             font-weight: 600 !important;
-
         }
 
-
         .card-body h4 {
-
             color: var(--heading-color) !important;
             font-weight: 500 !important;
-
         }
 
 
@@ -253,41 +190,31 @@
         ========================= */
 
         .table {
-
             color: var(--text-color) !important;
             background-color: #FFFFFF;
-
         }
 
-
         .table thead th {
-
             background-color: var(--periwinkle-blue) !important;
             color: var(--heading-color) !important;
             border-color: var(--border-color) !important;
-
         }
-
 
         .table tbody tr {
-
             background-color: #FFFFFF !important;
-
         }
-
 
         .table-striped tbody tr:nth-of-type(odd) {
-
             background-color: var(--pale-aqua) !important;
-
         }
 
-
         .table tbody td {
-
             color: var(--text-color) !important;
             border-color: var(--border-color) !important;
+        }
 
+        .table td a {
+            font-weight: 500;
         }
 
 
@@ -297,39 +224,28 @@
 
         .btn-primary,
         .btn-success {
-
             background-color: var(--periwinkle-blue) !important;
             border-color: var(--periwinkle-blue) !important;
             color: var(--heading-color) !important;
             box-shadow: none !important;
-
         }
-
 
         .btn-primary:hover,
         .btn-success:hover {
-
             background-color: var(--hover-blue) !important;
             border-color: var(--hover-blue) !important;
             color: var(--heading-color) !important;
-
         }
 
-
         .btn-secondary {
-
             background-color: var(--pale-aqua) !important;
             border-color: var(--pale-aqua) !important;
             color: var(--heading-color) !important;
-
         }
 
-
         .btn-secondary:hover {
-
             background-color: #B5DDE2 !important;
             border-color: #B5DDE2 !important;
-
         }
 
 
@@ -338,35 +254,23 @@
         ========================= */
 
         .form-control {
-
             background-color: #FFFFFF !important;
             color: var(--text-color) !important;
             border-color: var(--periwinkle-blue) !important;
-
         }
-
 
         .form-control:focus {
-
             border-color: var(--hover-blue) !important;
-
             box-shadow: 0 0 0 0.2rem
                 rgba(178, 202, 237, 0.4) !important;
-
         }
-
 
         .form-control::placeholder {
-
             color: #718096 !important;
-
         }
 
-
         label {
-
             color: var(--heading-color) !important;
-
         }
 
 
@@ -380,9 +284,7 @@
         h4,
         h5,
         h6 {
-
             color: var(--heading-color) !important;
-
         }
 
 
@@ -391,16 +293,11 @@
         ========================= */
 
         a {
-
             color: #4A6F9B;
-
         }
 
-
         a:hover {
-
             color: #315D91;
-
         }
 
 
@@ -409,28 +306,20 @@
         ========================= */
 
         .pagination .page-item .page-link {
-
             background-color: #FFFFFF;
             color: var(--text-color);
             border-color: var(--periwinkle-blue);
-
         }
 
-
         .pagination .page-item.active .page-link {
-
             background-color: var(--periwinkle-blue);
             border-color: var(--periwinkle-blue);
             color: var(--heading-color);
-
         }
 
-
         .pagination .page-item .page-link:hover {
-
             background-color: var(--pale-aqua);
             color: var(--heading-color);
-
         }
 
 
@@ -440,244 +329,218 @@
 
         .badge-primary,
         .badge-success {
-
             background-color: var(--periwinkle-blue) !important;
             color: var(--heading-color) !important;
-
-        }
-
-
-        /* =========================
-           TABLE LINKS
-        ========================= */
-
-        .table td a {
-
-            font-weight: 500;
-
         }
 
 
         /* =================================================
-           MOBILE MENU
+           MOBILE MENU BUTTON
         ================================================= */
 
         #mobileMenuButton {
-
             display: none;
-
         }
 
 
+        /* =================================================
+           MOBILE TABLE / CONTENT
+        ================================================= */
+
         @media (max-width: 991px) {
 
+            .card-body {
+                overflow-x: auto !important;
+            }
+
+            .table {
+                min-width: 650px;
+            }
+
+            .card-body form {
+                max-width: 100%;
+            }
+
+            .card-body .row {
+                max-width: 100%;
+            }
+
+            .btn {
+                max-width: 100%;
+            }
+
+            .card-header h1,
+            .card-header h2,
+            .card-header h3,
+            .card-header h4,
+            .card-header h5,
+            .card-header h6 {
+                word-break: break-word;
+            }
+
+
+            /* =========================
+               MOBILE MENU BUTTON
+            ========================= */
+
             #mobileMenuButton {
-
                 display: flex !important;
-
                 position: fixed !important;
-
-                top: 10px !important;
-
-                left: 12px !important;
-
-                width: 42px !important;
-
-                height: 42px !important;
-
-                align-items: center !important;
-
-                justify-content: center !important;
-
-                background-color: #B2CAED !important;
-
-                color: #334B63 !important;
-
-                border: none !important;
-
-                border-radius: 6px !important;
-
-                font-size: 25px !important;
-
-                line-height: 1 !important;
-
-                z-index: 10001 !important;
-
-                padding: 0 !important;
-
-                box-shadow: none !important;
-
+                top: 10px;
+                left: 10px;
+                width: 45px;
+                height: 45px;
+                align-items: center;
+                justify-content: center;
+                z-index: 11000 !important;
+                border: none;
+                border-radius: 8px;
+                background-color: var(--periwinkle-blue);
+                color: var(--heading-color);
+                font-size: 24px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                cursor: pointer;
             }
 
 
-            #mobileMenuButton:active {
-
-                background-color: #91B3E2 !important;
-
-            }
-
-
-            /* Mobile sidebar */
+            /* =========================
+               MOBILE SIDEBAR
+            ========================= */
 
             .sidebar {
-
                 position: fixed !important;
-
                 top: 0 !important;
-
                 left: 0 !important;
-
                 bottom: 0 !important;
-
                 width: 250px !important;
-
                 height: 100vh !important;
-
                 z-index: 10000 !important;
-
                 transform: translateX(-100%) !important;
-
                 transition: transform 0.25s ease-in-out !important;
-
                 background-color: #B2CAED !important;
-
                 box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15) !important;
-
             }
-
-
-            /* Open sidebar */
 
             body.mobile-sidebar-open .sidebar {
-
                 transform: translateX(0) !important;
-
             }
-
 
             .sidebar-wrapper {
-
                 height: 100% !important;
-
                 overflow-y: auto !important;
-
             }
-
 
             .sidebar-content {
-
                 min-height: 100% !important;
-
             }
-
 
             .sidebar .nav {
-
                 display: block !important;
-
                 padding-top: 60px !important;
-
             }
-
 
             .sidebar .nav-item {
-
                 display: block !important;
-
                 width: 100% !important;
-
             }
-
 
             .sidebar .nav-item a {
-
                 display: flex !important;
-
                 align-items: center !important;
-
                 width: 100% !important;
-
                 padding: 14px 20px !important;
-
             }
-
 
             .sidebar .nav-item a i {
-
                 width: 25px !important;
-
                 margin-right: 10px !important;
-
             }
-
 
             .sidebar .nav-item a p {
-
                 display: block !important;
-
                 margin: 0 !important;
-
             }
 
 
-            /* Overlay */
+            /* =========================
+               MOBILE OVERLAY
+            ========================= */
 
             body.mobile-sidebar-open::after {
-
                 content: "";
-
                 position: fixed;
-
                 top: 0;
-
                 left: 0;
-
                 right: 0;
-
                 bottom: 0;
-
                 background: rgba(0, 0, 0, 0.35);
-
                 z-index: 9999 !important;
-
             }
-
-
-            /* Keep sidebar above overlay */
 
             body.mobile-sidebar-open .sidebar {
-
                 z-index: 10000 !important;
-
             }
 
 
+            /* =========================
+               MAIN PANEL
+            ========================= */
+
             .main-panel {
-
                 width: 100% !important;
-
                 margin-left: 0 !important;
-
             }
 
 
             /* Hide Atlantis mobile toggle */
 
             .nav-toggle {
-
                 display: none !important;
+            }
 
+
+            /* =========================
+               MOBILE TOPBAR
+            ========================= */
+
+            .main-header {
+                padding-left: 55px !important;
+            }
+
+            .main-header .navbar {
+                min-height: 60px !important;
+            }
+
+            .navbar-header {
+                padding-left: 0 !important;
+            }
+
+
+            /* =========================
+               MOBILE PAGINATION
+            ========================= */
+
+            .pagination {
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                margin-bottom: 0 !important;
+            }
+
+            .pagination .page-link {
+                padding: 8px 12px !important;
             }
 
         }
 
 
+        /* =========================
+           DESKTOP
+        ========================= */
+
         @media (min-width: 992px) {
 
             #mobileMenuButton {
-
                 display: none !important;
-
             }
 
         }
@@ -690,243 +553,232 @@
 <body data-background-color="light">
 
 
-<!-- =========================
-     CUSTOM MOBILE MENU BUTTON
-========================= -->
-
-<button id="mobileMenuButton"
-        type="button"
-        aria-label="Open menu">
-
-    ☰
-
-</button>
-
-
-<div class="wrapper">
-
-
     <!-- =========================
-         TOP HEADER
+         CUSTOM MOBILE MENU BUTTON
     ========================= -->
 
-    <div class="main-header">
+    <button id="mobileMenuButton"
+            type="button"
+            aria-label="Open menu">
+        ☰
+    </button>
 
 
-        <div class="main-header-logo">
+    <div class="wrapper">
 
 
-            <div class="logo-header"
-                 data-background-color="light">
+        <!-- =========================
+             TOP HEADER
+        ========================= -->
+
+        <div class="main-header">
+
+            <div class="main-header-logo">
+
+                <div class="logo-header"
+                     data-background-color="light">
+
+                    <a href="{% url 'home' %}"
+                       class="logo d-flex align-items-center">
+
+                        <img src="{% static 'img/cat.jpg' %}"
+                             alt="Logo"
+                             class="mr-2"
+                             style="
+                                width: 35px;
+                                height: 35px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                             ">
+
+                        <span class="h5 mb-0"
+                              style="color: #334B63;">
+                            Achuuuu
+                        </span>
+
+                    </a>
 
 
-                <a href="{% url 'home' %}"
-                   class="logo d-flex align-items-center">
+                    <div class="nav-toggle">
 
+                        <button type="button"
+                                class="btn btn-toggle toggle-sidebar">
 
-                    <img src="{% static 'img/cat.jpg' %}"
-                         alt="Logo"
-                         class="mr-2"
-                         style="
-                            width: 35px;
-                            height: 35px;
-                            border-radius: 50%;
-                            object-fit: cover;
-                         ">
+                            <i class="icon-menu"></i>
 
+                        </button>
 
-                    <span class="h5 mb-0"
-                          style="color: #334B63;">
+                    </div>
 
-                        Achuuuu
-
-                    </span>
-
-
-                </a>
-
-
-                <div class="nav-toggle">
 
                     <button type="button"
-                            class="btn btn-toggle toggle-sidebar">
+                            class="topbar-toggler more">
 
-                        <i class="icon-menu"></i>
+                        <i class="icon-options-vertical"></i>
 
                     </button>
 
                 </div>
 
-
-                <button type="button"
-                        class="topbar-toggler more">
-
-                    <i class="icon-options-vertical"></i>
-
-                </button>
-
-
             </div>
 
+
+            <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+
+                <div class="container-fluid">
+
+                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+
+                        <li class="nav-item">
+
+                            <span class="nav-link"
+                                  style="
+                                    background-color: #B2CAED;
+                                    color: #334B63;
+                                    border-radius: 6px;
+                                  ">
+
+                                {{ request.user.username }}
+
+                            </span>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </nav>
 
         </div>
 
 
-        <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+        <!-- =========================
+             SIDEBAR
+        ========================= -->
 
+        <div class="sidebar"
+             data-background-color="light">
 
-            <div class="container-fluid">
-
-
-                <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-
-
-                    <li class="nav-item">
-
-
-                        <span class="nav-link"
-                              style="
-                                background-color: #B2CAED;
-                                color: #334B63;
-                                border-radius: 6px;
-                              ">
-
-                            {{ request.user.username }}
-
-                        </span>
-
-
-                    </li>
-
-
-                </ul>
-
-
+            <div class="sidebar-logo">
             </div>
 
 
-        </nav>
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+
+                <div class="sidebar-content">
+
+                    <ul class="nav nav-primary">
 
 
-    </div>
+                        <li class="nav-item">
+
+                            <a href="{% url 'home' %}">
+
+                                <i class="fas fa-home"></i>
+
+                                <p>Dashboard</p>
+
+                            </a>
+
+                        </li>
 
 
-    <!-- =========================
-         SIDEBAR
-    ========================= -->
+                        <li class="nav-item">
 
-    <div class="sidebar"
-         data-background-color="light">
+                            <a href="{% url 'task-list' %}">
+
+                                <i class="fas fa-tasks"></i>
+
+                                <p>Tasks</p>
+
+                            </a>
+
+                        </li>
 
 
-        <div class="sidebar-logo">
+                        <li class="nav-item">
+
+                            <a href="{% url 'subtask-list' %}">
+
+                                <i class="fas fa-list-ul"></i>
+
+                                <p>SubTasks</p>
+
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a href="{% url 'note-list' %}">
+
+                                <i class="fas fa-sticky-note"></i>
+
+                                <p>Notes</p>
+
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a href="{% url 'category-list' %}">
+
+                                <i class="fas fa-folder"></i>
+
+                                <p>Categories</p>
+
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a href="{% url 'priority-list' %}">
+
+                                <i class="fas fa-flag"></i>
+
+                                <p>Priorities</p>
+
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a href="{% url 'account_logout' %}">
+
+                                <i class="fas fa-sign-out-alt"></i>
+
+                                <p>Logout</p>
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
         </div>
 
 
-        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <!-- =========================
+             MAIN CONTENT
+        ========================= -->
 
+        <div class="main-panel">
 
-            <div class="sidebar-content">
-
-
-                <ul class="nav nav-primary">
-
-
-                    <li class="nav-item">
-
-                        <a href="{% url 'home' %}">
-
-                            <i class="fas fa-home"></i>
-
-                            <p>Dashboard</p>
-
-                        </a>
-
-                    </li>
-
-
-                    <li class="nav-item">
-
-                        <a href="{% url 'task-list' %}">
-
-                            <i class="fas fa-tasks"></i>
-
-                            <p>Tasks</p>
-
-                        </a>
-
-                    </li>
-
-
-                    <li class="nav-item">
-
-                        <a href="{% url 'subtask-list' %}">
-
-                            <i class="fas fa-list-ul"></i>
-
-                            <p>SubTasks</p>
-
-                        </a>
-
-                    </li>
-
-
-                    <li class="nav-item">
-
-                        <a href="{% url 'note-list' %}">
-
-                            <i class="fas fa-sticky-note"></i>
-
-                            <p>Notes</p>
-
-                        </a>
-
-                    </li>
-
-
-                    <li class="nav-item">
-
-                        <a href="{% url 'category-list' %}">
-
-                            <i class="fas fa-folder"></i>
-
-                            <p>Categories</p>
-
-                        </a>
-
-                    </li>
-
-
-                    <li class="nav-item">
-
-                        <a href="{% url 'priority-list' %}">
-
-                            <i class="fas fa-flag"></i>
-
-                            <p>Priorities</p>
-
-                        </a>
-
-                    </li>
-
-
-                    <li class="nav-item">
-
-                        <a href="{% url 'account_logout' %}">
-
-                            <i class="fas fa-sign-out-alt"></i>
-
-                            <p>Logout</p>
-
-                        </a>
-
-                    </li>
-
-
-                </ul>
-
-
-            </div>
+            {% block content %}
+            {% endblock %}
 
         </div>
 
@@ -934,138 +786,120 @@
 
 
     <!-- =========================
-         MAIN CONTENT
+         SCRIPTS
     ========================= -->
 
-    <div class="main-panel">
+    <script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
 
-        {% block content %}
+    <script src="{% static 'js/core/popper.min.js' %}"></script>
 
-        {% endblock %}
+    <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
 
-    </div>
-
-
-</div>
+    <script src="{% static 'js/atlantis.min.js' %}"></script>
 
 
-<!-- =========================
-     SCRIPTS
-========================= -->
+    <!-- =========================
+         MOBILE SIDEBAR SCRIPT
+    ========================= -->
 
-<script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
+    <script>
 
-<script src="{% static 'js/core/popper.min.js' %}"></script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-<script src="{% static 'js/core/bootstrap.min.js' %}"></script>
+            const menuButton =
+                document.getElementById("mobileMenuButton");
 
-<script src="{% static 'js/atlantis.min.js' %}"></script>
-
-
-<!-- =========================
-     MOBILE SIDEBAR SCRIPT
-========================= -->
-
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const menuButton =
-        document.getElementById("mobileMenuButton");
-
-    const sidebar =
-        document.querySelector(".sidebar");
+            const sidebar =
+                document.querySelector(".sidebar");
 
 
-    if (!menuButton || !sidebar) {
-
-        return;
-
-    }
+            if (!menuButton || !sidebar) {
+                return;
+            }
 
 
-    /* Open / close menu */
+            /* Open / close menu */
 
-    menuButton.addEventListener("click", function (event) {
+            menuButton.addEventListener("click", function (event) {
 
-        event.preventDefault();
+                event.preventDefault();
 
-        event.stopPropagation();
+                event.stopPropagation();
 
-        document.body.classList.toggle(
-            "mobile-sidebar-open"
-        );
-
-    });
-
-
-    /* Close menu when clicking outside */
-
-    document.addEventListener("click", function (event) {
-
-        if (window.innerWidth <= 991) {
-
-            if (
-                document.body.classList.contains(
-                    "mobile-sidebar-open"
-                ) &&
-                !sidebar.contains(event.target) &&
-                !menuButton.contains(event.target)
-            ) {
-
-                document.body.classList.remove(
+                document.body.classList.toggle(
                     "mobile-sidebar-open"
                 );
 
-            }
-
-        }
-
-    });
+            });
 
 
-    /* Close menu after selecting a page */
+            /* Close menu when clicking outside */
 
-    const sidebarLinks =
-        document.querySelectorAll(
-            ".sidebar .nav-item a"
-        );
+            document.addEventListener("click", function (event) {
+
+                if (window.innerWidth <= 991) {
+
+                    if (
+                        document.body.classList.contains(
+                            "mobile-sidebar-open"
+                        ) &&
+                        !sidebar.contains(event.target) &&
+                        !menuButton.contains(event.target)
+                    ) {
+
+                        document.body.classList.remove(
+                            "mobile-sidebar-open"
+                        );
+
+                    }
+
+                }
+
+            });
 
 
-    sidebarLinks.forEach(function (link) {
+            /* Close menu after selecting a page */
 
-        link.addEventListener("click", function () {
-
-            if (window.innerWidth <= 991) {
-
-                document.body.classList.remove(
-                    "mobile-sidebar-open"
+            const sidebarLinks =
+                document.querySelectorAll(
+                    ".sidebar .nav-item a"
                 );
 
-            }
+
+            sidebarLinks.forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    if (window.innerWidth <= 991) {
+
+                        document.body.classList.remove(
+                            "mobile-sidebar-open"
+                        );
+
+                    }
+
+                });
+
+            });
+
+
+            /* Reset when switching to desktop */
+
+            window.addEventListener("resize", function () {
+
+                if (window.innerWidth > 991) {
+
+                    document.body.classList.remove(
+                        "mobile-sidebar-open"
+                    );
+
+                }
+
+            });
 
         });
 
-    });
-
-
-    /* Reset when switching to desktop */
-
-    window.addEventListener("resize", function () {
-
-        if (window.innerWidth > 991) {
-
-            document.body.classList.remove(
-                "mobile-sidebar-open"
-            );
-
-        }
-
-    });
-
-});
-
-</script>
+    </script>
 
 
 </body>

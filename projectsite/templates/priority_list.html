@@ -17,11 +17,12 @@
 
                     <br />
 
-                    <div class="col-md-12 row">
+                    <!-- DESKTOP CONTROLS -->
+                    <div class="col-md-12 row desktop-priority-controls">
 
-                        <!-- Search -->
                         <div class="col-md-6">
                             <form method="get" action="{% url 'priority-list' %}">
+
                                 <div class="input-group">
 
                                     <input type="text"
@@ -31,16 +32,17 @@
                                            value="{{ request.GET.q }}">
 
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit"
+                                                class="btn btn-primary">
                                             Search
                                         </button>
                                     </div>
 
                                 </div>
+
                             </form>
                         </div>
 
-                        <!-- Add Priority -->
                         <div class="col-md-6">
                             <div class="pull-right">
                                 <a href="{% url 'priority-add' %}"
@@ -52,51 +54,126 @@
 
                     </div>
 
+
+                    <!-- MOBILE CONTROLS -->
+                    <div class="mobile-priority-controls">
+
+                        <form method="get" action="{% url 'priority-list' %}">
+
+                            <div class="mobile-search-row">
+
+                                <input type="text"
+                                       name="q"
+                                       class="form-control"
+                                       placeholder="Search ..."
+                                       value="{{ request.GET.q }}">
+
+                                <button type="submit"
+                                        class="btn btn-primary">
+                                    Search
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                        <a href="{% url 'priority-add' %}"
+                           class="btn btn-success btn-rounded mobile-add-button">
+                            Add Priority
+                        </a>
+
+                    </div>
+
+
                     <div class="card-body">
 
-                        <table class="table table-striped mt-3">
+                        <!-- DESKTOP TABLE -->
+                        <div class="desktop-priority-table">
 
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
+                            <table class="table table-striped mt-3">
 
-                            <tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
 
-                                {% for object in priorities %}
+                                <tbody>
 
-                                <tr>
-                                    <td>{{ object.name }}</td>
+                                    {% for object in priorities %}
 
-                                    <td>
-                                        <a href="{% url 'priority-update' object.id %}">
-                                            Edit
-                                        </a>
+                                    <tr>
+                                        <td>{{ object.name }}</td>
 
-                                        <a href="{% url 'priority-delete' object.id %}"
-                                           class="text-danger">
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <a href="{% url 'priority-update' object.id %}">
+                                                Edit
+                                            </a>
 
-                                {% empty %}
+                                            <a href="{% url 'priority-delete' object.id %}"
+                                               class="text-danger">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
 
-                                <tr>
-                                    <td colspan="2" style="text-align: center">
-                                        <p class="text-sm font-weight-bold mb-0">
-                                            No Records Found
-                                        </p>
-                                    </td>
-                                </tr>
+                                    {% empty %}
 
-                                {% endfor %}
+                                    <tr>
+                                        <td colspan="2" style="text-align: center">
+                                            <p class="text-sm font-weight-bold mb-0">
+                                                No Records Found
+                                            </p>
+                                        </td>
+                                    </tr>
 
-                            </tbody>
+                                    {% endfor %}
 
-                        </table>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- MOBILE CARDS -->
+                        <div class="mobile-priority-list">
+
+                            {% for object in priorities %}
+
+                            <div class="mobile-priority-card">
+
+                                <div class="mobile-priority-title">
+                                    {{ object.name }}
+                                </div>
+
+                                <div class="mobile-priority-actions">
+
+                                    <a href="{% url 'priority-update' object.id %}"
+                                       class="btn btn-primary btn-sm">
+                                        Edit
+                                    </a>
+
+                                    <a href="{% url 'priority-delete' object.id %}"
+                                       class="btn btn-danger btn-sm">
+                                        Delete
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                            {% empty %}
+
+                            <div class="mobile-priority-card text-center">
+                                <strong>No Records Found</strong>
+                            </div>
+
+                            {% endfor %}
+
+                        </div>
+
 
                         {% include 'includes/pagination.html' %}
 
@@ -109,5 +186,99 @@
 
     </div>
 </div>
+
+
+<style>
+
+/* Hidden on desktop */
+
+.mobile-priority-controls,
+.mobile-priority-list {
+    display: none;
+}
+
+
+/* Mobile only */
+
+@media (max-width: 991px) {
+
+    /* Hide desktop controls */
+    .desktop-priority-controls {
+        display: none !important;
+    }
+
+    /* Hide desktop table */
+    .desktop-priority-table {
+        display: none !important;
+    }
+
+    /* Mobile controls */
+    .mobile-priority-controls {
+        display: block;
+        padding: 0 15px;
+    }
+
+    .mobile-search-row {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .mobile-search-row input {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .mobile-search-row button {
+        flex-shrink: 0;
+    }
+
+    .mobile-add-button {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+
+    /* Mobile cards */
+
+    .mobile-priority-list {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .mobile-priority-card {
+        background: #ffffff;
+        border: 1px solid #C8D9E2;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .mobile-priority-title {
+        color: #334B63 !important;
+        font-size: 18px;
+        font-weight: 600;
+        word-break: break-word;
+    }
+
+    .mobile-priority-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid #C8D9E2;
+    }
+
+    .mobile-priority-actions a {
+        flex: 1;
+        text-align: center;
+    }
+
+}
+
+</style>
 
 {% endblock %}

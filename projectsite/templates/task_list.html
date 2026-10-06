@@ -11,118 +11,441 @@
 
                 <div class="card">
 
+                    <!-- =========================
+                         HEADER
+                    ========================= -->
+
                     <div class="card-header">
-                        <div class="card-title">List of Tasks</div>
+
+                        <div class="card-title">
+                            List of Tasks
+                        </div>
+
+                        <p class="task-subtitle">
+                            Monitor your list here
+                        </p>
+
                     </div>
+
 
                     <br />
 
-                    <div class="col-md-12 row">
+
+                    <!-- =========================
+                         SEARCH + SORT + ADD TASK
+                    ========================= -->
+
+                    <div class="col-md-12 row task-controls-wrapper">
 
                         <!-- Search and Sort -->
+
                         <div class="col-md-8">
-                            <form method="get" action="{% url 'task-list' %}">
+
+                            <form method="get"
+                                  action="{% url 'task-list' %}">
 
                                 <div class="input-group">
 
                                     <!-- Search -->
+
                                     <input type="text"
                                            name="q"
                                            class="form-control"
                                            placeholder="Search ..."
-                                           value="{{ request.GET.q }}">
+                                           value="{{ request.GET.q|default:'' }}">
+
 
                                     <!-- Sort -->
+
                                     <select name="sort"
-                                            class="form-control"
+                                            class="form-control sort-desktop"
                                             style="max-width: 220px; margin-left: 5px;"
                                             onchange="this.form.submit()">
 
-                                        <option value="">Sort by</option>
+                                        <option value="">
+                                            Sort by
+                                        </option>
 
                                         <option value="title"
                                             {% if request.GET.sort == 'title' %}selected{% endif %}>
-                                            Title 
+                                            Title
                                         </option>
 
                                         <option value="status"
                                             {% if request.GET.sort == 'status' %}selected{% endif %}>
-                                            Status 
+                                            Status
                                         </option>
 
                                         <option value="deadline"
                                             {% if request.GET.sort == 'deadline' %}selected{% endif %}>
-                                            Deadline 
+                                            Deadline
                                         </option>
 
                                         <option value="priority"
                                             {% if request.GET.sort == 'priority' %}selected{% endif %}>
-                                            Priority 
+                                            Priority
                                         </option>
 
                                         <option value="category"
                                             {% if request.GET.sort == 'category' %}selected{% endif %}>
-                                            Category 
+                                            Category
                                         </option>
 
                                     </select>
 
+
                                     <!-- Search Button -->
+
                                     <div class="input-group-append">
+
                                         <button type="submit"
                                                 class="btn btn-primary">
                                             Search
                                         </button>
+
                                     </div>
 
                                 </div>
 
                             </form>
+
                         </div>
 
+
                         <!-- Add Task -->
+
                         <div class="col-md-4">
+
                             <div class="pull-right">
+
                                 <a href="{% url 'task-add' %}"
                                    class="btn btn-success btn-rounded">
+
                                     Add Task
+
                                 </a>
+
                             </div>
+
                         </div>
 
                     </div>
 
+
+                    <!-- =========================
+                         MOBILE CONTROLS
+                    ========================= -->
+
+                    <div class="mobile-task-controls">
+
+                        <!-- Search -->
+
+                        <form method="get"
+                              action="{% url 'task-list' %}"
+                              class="mobile-search-form">
+
+                            <input type="text"
+                                   name="q"
+                                   class="form-control"
+                                   placeholder="Search ..."
+                                   value="{{ request.GET.q|default:'' }}">
+
+                            <button type="submit"
+                                    class="mobile-search-button">
+
+                                <i class="fas fa-search"></i>
+
+                            </button>
+
+                        </form>
+
+
+                        <!-- Sort + Add Task -->
+
+                        <div class="mobile-sort-row">
+
+                            <form method="get"
+                                  action="{% url 'task-list' %}"
+                                  class="mobile-sort-form">
+
+                                {% if request.GET.q %}
+
+                                    <input type="hidden"
+                                           name="q"
+                                           value="{{ request.GET.q }}">
+
+                                {% endif %}
+
+
+                                <select name="sort"
+                                        class="form-control mobile-sort-select">
+
+                                    <option value="title"
+                                        {% if request.GET.sort == 'title' or not request.GET.sort %}selected{% endif %}>
+                                        Title
+                                    </option>
+
+                                    <option value="status"
+                                        {% if request.GET.sort == 'status' %}selected{% endif %}>
+                                        Status
+                                    </option>
+
+                                    <option value="deadline"
+                                        {% if request.GET.sort == 'deadline' %}selected{% endif %}>
+                                        Deadline
+                                    </option>
+
+                                    <option value="priority"
+                                        {% if request.GET.sort == 'priority' %}selected{% endif %}>
+                                        Priority
+                                    </option>
+
+                                    <option value="category"
+                                        {% if request.GET.sort == 'category' %}selected{% endif %}>
+                                        Category
+                                    </option>
+
+                                </select>
+
+
+                                <button type="submit"
+                                        class="btn btn-primary mobile-sort-button">
+
+                                    Sort
+
+                                </button>
+
+                            </form>
+
+
+                            <a href="{% url 'task-add' %}"
+                               class="btn btn-success mobile-add-button">
+
+                                Add Task
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         TASK DATA
+                    ========================= -->
+
                     <div class="card-body">
 
-                        <table class="table table-striped mt-3">
 
-                            <thead>
-                                <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Deadline</th>
-                                    <th scope="col">Priority</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
+                        <!-- =========================
+                             DESKTOP TABLE
+                        ========================= -->
 
-                            <tbody>
+                        <div class="desktop-task-table">
 
-                                {% for object in tasks %}
+                            <table class="table table-striped mt-3">
 
-                                <tr>
-                                    <td>{{ object.title }}</td>
+                                <thead>
 
-                                    <td>{{ object.status }}</td>
+                                    <tr>
 
-                                    <td>{{ object.deadline }}</td>
+                                        <th scope="col">
+                                            Title
+                                        </th>
 
-                                    <td>{{ object.priority }}</td>
+                                        <th scope="col">
+                                            Status
+                                        </th>
 
-                                    <td>{{ object.category }}</td>
+                                        <th scope="col">
+                                            Deadline
+                                        </th>
 
-                                    <td>
+                                        <th scope="col">
+                                            Priority
+                                        </th>
+
+                                        <th scope="col">
+                                            Category
+                                        </th>
+
+                                        <th scope="col">
+                                            Action
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    {% for object in tasks %}
+
+                                    <tr>
+
+                                        <td>
+                                            {{ object.title }}
+                                        </td>
+
+                                        <td>
+                                            {{ object.status }}
+                                        </td>
+
+                                        <td>
+                                            {{ object.deadline }}
+                                        </td>
+
+                                        <td>
+                                            {{ object.priority }}
+                                        </td>
+
+                                        <td>
+                                            {{ object.category }}
+                                        </td>
+
+                                        <td>
+
+                                            <a href="{% url 'task-update' object.id %}">
+                                                Edit
+                                            </a>
+
+                                            <a href="{% url 'task-delete' object.id %}"
+                                               class="text-danger">
+                                                Delete
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    {% empty %}
+
+                                    <tr>
+
+                                        <td colspan="6"
+                                            style="text-align: center">
+
+                                            <p class="text-sm font-weight-bold mb-0">
+                                                No Records Found
+                                            </p>
+
+                                        </td>
+
+                                    </tr>
+
+                                    {% endfor %}
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- =========================
+                             MOBILE TASK CARDS
+                        ========================= -->
+
+                        <div class="mobile-task-list">
+
+                            {% for object in tasks %}
+
+                            <div class="mobile-task-card">
+
+
+                                <!-- TITLE -->
+
+                                <div class="mobile-task-row">
+
+                                    <span class="mobile-task-label">
+                                        Title
+                                    </span>
+
+                                    <span class="mobile-task-value">
+                                        {{ object.title }}
+                                    </span>
+
+                                </div>
+
+
+                                <!-- DEADLINE -->
+
+                                <div class="mobile-task-row">
+
+                                    <span class="mobile-task-label">
+                                        Deadline
+                                    </span>
+
+                                    <span class="mobile-task-value">
+
+                                        {% if object.deadline %}
+                                            {{ object.deadline }}
+                                        {% else %}
+                                            No deadline
+                                        {% endif %}
+
+                                    </span>
+
+                                </div>
+
+
+                                <!-- STATUS -->
+
+                                <div class="mobile-task-row">
+
+                                    <span class="mobile-task-label">
+                                        Status
+                                    </span>
+
+                                    <span class="mobile-task-value">
+                                        {{ object.status }}
+                                    </span>
+
+                                </div>
+
+
+                                <!-- PRIORITY -->
+
+                                <div class="mobile-task-row">
+
+                                    <span class="mobile-task-label">
+                                        Priority
+                                    </span>
+
+                                    <span class="mobile-task-value">
+                                        {{ object.priority }}
+                                    </span>
+
+                                </div>
+
+
+                                <!-- CATEGORY -->
+
+                                <div class="mobile-task-row">
+
+                                    <span class="mobile-task-label">
+                                        Category
+                                    </span>
+
+                                    <span class="mobile-task-value">
+                                        {{ object.category }}
+                                    </span>
+
+                                </div>
+
+
+                                <!-- ACTION -->
+
+                                <div class="mobile-task-row">
+
+                                    <span class="mobile-task-label">
+                                        Action
+                                    </span>
+
+                                    <span class="mobile-task-value mobile-task-actions">
+
                                         <a href="{% url 'task-update' object.id %}">
                                             Edit
                                         </a>
@@ -131,24 +454,31 @@
                                            class="text-danger">
                                             Delete
                                         </a>
-                                    </td>
-                                </tr>
 
-                                {% empty %}
+                                    </span>
 
-                                <tr>
-                                    <td colspan="6" style="text-align: center">
-                                        <p class="text-sm font-weight-bold mb-0">
-                                            No Records Found
-                                        </p>
-                                    </td>
-                                </tr>
+                                </div>
 
-                                {% endfor %}
 
-                            </tbody>
+                            </div>
 
-                        </table>
+
+                            {% empty %}
+
+                            <div class="mobile-no-tasks">
+
+                                <p>
+                                    No Records Found
+                                </p>
+
+                            </div>
+
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- PAGINATION -->
 
                         {% include 'includes/pagination.html' %}
 
@@ -161,5 +491,301 @@
 
     </div>
 </div>
+
+
+<style>
+
+/* =================================================
+   DESKTOP
+================================================= */
+
+.task-subtitle {
+    display: none;
+}
+
+.mobile-task-controls,
+.mobile-task-list {
+    display: none;
+}
+
+
+/* =================================================
+   MOBILE
+================================================= */
+
+@media (max-width: 991px) {
+
+
+    /* ---------------------------------------------
+       HIDE DESKTOP CONTROLS
+    --------------------------------------------- */
+
+    .task-controls-wrapper {
+        display: none !important;
+    }
+
+
+    /* ---------------------------------------------
+       HEADER
+    --------------------------------------------- */
+
+    .task-subtitle {
+        display: block;
+        margin-top: 8px;
+        margin-bottom: 0;
+        color: var(--text-color) !important;
+        font-size: 17px;
+    }
+
+
+    /* ---------------------------------------------
+       MOBILE CONTROLS
+    --------------------------------------------- */
+
+    .mobile-task-controls {
+        display: block;
+        padding: 0 20px 10px 20px;
+    }
+
+
+    /* ---------------------------------------------
+       MOBILE SEARCH
+    --------------------------------------------- */
+
+    .mobile-search-form {
+        display: flex;
+        width: 100%;
+        border: 2px solid var(--periwinkle-blue);
+        border-radius: 30px;
+        overflow: hidden;
+        margin-bottom: 15px;
+    }
+
+    .mobile-search-form input {
+        flex: 1;
+        min-width: 0;
+        height: 52px;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding-left: 18px;
+    }
+
+    .mobile-search-button {
+        width: 75px;
+        border: none;
+        background-color: var(--periwinkle-blue);
+        color: var(--heading-color);
+        font-size: 18px;
+    }
+
+    .mobile-search-button:hover {
+        background-color: var(--hover-blue);
+    }
+
+
+    /* ---------------------------------------------
+       SORT ROW
+    --------------------------------------------- */
+
+    .mobile-sort-row {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .mobile-sort-form {
+        display: flex;
+        flex: 1;
+        min-width: 0;
+        gap: 10px;
+    }
+
+    .mobile-sort-select {
+        flex: 1;
+        min-width: 0;
+        height: 48px;
+        border-radius: 25px;
+    }
+
+    .mobile-sort-button {
+        width: 80px;
+        height: 48px;
+        border-radius: 25px;
+        padding: 0;
+    }
+
+    .mobile-add-button {
+        height: 48px;
+        padding: 0 18px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        text-decoration: none !important;
+    }
+
+
+    /* ---------------------------------------------
+       HIDE DESKTOP TABLE
+    --------------------------------------------- */
+
+    .desktop-task-table {
+        display: none !important;
+    }
+
+
+    /* ---------------------------------------------
+       CARD BODY
+    --------------------------------------------- */
+
+    .card-body {
+        padding: 20px !important;
+        overflow-x: visible !important;
+    }
+
+
+    /* ---------------------------------------------
+       MOBILE TASK LIST
+    --------------------------------------------- */
+
+    .mobile-task-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+
+    /* ---------------------------------------------
+       TASK CARD
+    --------------------------------------------- */
+
+    .mobile-task-card {
+        background-color: #FFFFFF;
+        border: 2px solid var(--periwinkle-blue);
+        border-radius: 18px;
+        padding: 22px 18px;
+    }
+
+
+    /* ---------------------------------------------
+       TASK ROW
+    --------------------------------------------- */
+
+    .mobile-task-row {
+        display: grid;
+        grid-template-columns: 90px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        margin-bottom: 17px;
+    }
+
+    .mobile-task-row:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* ---------------------------------------------
+       LABEL
+    --------------------------------------------- */
+
+    .mobile-task-label {
+        color: var(--heading-color);
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+
+    /* ---------------------------------------------
+       VALUE
+    --------------------------------------------- */
+
+    .mobile-task-value {
+        color: var(--text-color);
+        font-size: 16px;
+        text-align: right;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* ---------------------------------------------
+       ACTIONS
+    --------------------------------------------- */
+
+    .mobile-task-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 14px;
+    }
+
+    .mobile-task-actions a {
+        text-decoration: none !important;
+        font-weight: 500;
+    }
+
+
+    /* ---------------------------------------------
+       NO TASKS
+    --------------------------------------------- */
+
+    .mobile-no-tasks {
+        text-align: center;
+        padding: 25px;
+        border: 2px solid var(--border-color);
+        border-radius: 15px;
+    }
+
+    .mobile-no-tasks p {
+        margin: 0;
+    }
+
+}
+
+
+/* =================================================
+   SMALL PHONES
+================================================= */
+
+@media (max-width: 480px) {
+
+    .mobile-task-controls {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .card-body {
+        padding: 15px !important;
+    }
+
+    .mobile-task-card {
+        padding: 20px 15px;
+    }
+
+    .mobile-task-row {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .mobile-task-label,
+    .mobile-task-value {
+        font-size: 15px;
+    }
+
+    .mobile-add-button {
+        padding: 0 14px;
+        font-size: 14px;
+    }
+
+    .mobile-sort-button {
+        width: 70px;
+    }
+
+}
+
+</style>
 
 {% endblock %}

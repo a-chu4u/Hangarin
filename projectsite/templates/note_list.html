@@ -17,11 +17,12 @@
 
                     <br />
 
-                    <div class="col-md-12 row">
+                    <!-- DESKTOP CONTROLS -->
+                    <div class="col-md-12 row desktop-note-controls">
 
-                        <!-- Search -->
                         <div class="col-md-6">
                             <form method="get" action="{% url 'note-list' %}">
+
                                 <div class="input-group">
 
                                     <input type="text"
@@ -31,16 +32,17 @@
                                            value="{{ request.GET.q }}">
 
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit"
+                                                class="btn btn-primary">
                                             Search
                                         </button>
                                     </div>
 
                                 </div>
+
                             </form>
                         </div>
 
-                        <!-- Add Note -->
                         <div class="col-md-6">
                             <div class="pull-right">
                                 <a href="{% url 'note-add' %}"
@@ -52,55 +54,140 @@
 
                     </div>
 
+
+                    <!-- MOBILE CONTROLS -->
+                    <div class="mobile-note-controls">
+
+                        <form method="get" action="{% url 'note-list' %}">
+
+                            <div class="mobile-search-row">
+
+                                <input type="text"
+                                       name="q"
+                                       class="form-control"
+                                       placeholder="Search ..."
+                                       value="{{ request.GET.q }}">
+
+                                <button type="submit"
+                                        class="btn btn-primary">
+                                    Search
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                        <a href="{% url 'note-add' %}"
+                           class="btn btn-success btn-rounded mobile-add-button">
+                            Add Note
+                        </a>
+
+                    </div>
+
+
                     <div class="card-body">
 
-                        <table class="table table-striped mt-3">
+                        <!-- DESKTOP TABLE -->
+                        <div class="desktop-note-table">
 
-                            <thead>
-                                <tr>
-                                    <th scope="col">Task</th>
-                                    <th scope="col">Content</th>
-                                    <th scope="col">Created At</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
+                            <table class="table table-striped mt-3">
 
-                            <tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Task</th>
+                                        <th scope="col">Content</th>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
 
-                                {% for object in notes %}
+                                <tbody>
 
-                                <tr>
-                                    <td>{{ object.task }}</td>
-                                    <td>{{ object.content }}</td>
-                                    <td>{{ object.created_at }}</td>
+                                    {% for object in notes %}
 
-                                    <td>
-                                        <a href="{% url 'note-update' object.id %}">
-                                            Edit
-                                        </a>
+                                    <tr>
+                                        <td>{{ object.task }}</td>
+                                        <td>{{ object.content }}</td>
+                                        <td>{{ object.created_at }}</td>
 
-                                        <a href="{% url 'note-delete' object.id %}"
-                                           class="text-danger">
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <a href="{% url 'note-update' object.id %}">
+                                                Edit
+                                            </a>
 
-                                {% empty %}
+                                            <a href="{% url 'note-delete' object.id %}"
+                                               class="text-danger">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
 
-                                <tr>
-                                    <td colspan="4" style="text-align: center">
-                                        <p class="text-sm font-weight-bold mb-0">
-                                            No Records Found
-                                        </p>
-                                    </td>
-                                </tr>
+                                    {% empty %}
 
-                                {% endfor %}
+                                    <tr>
+                                        <td colspan="4" style="text-align: center">
+                                            <p class="text-sm font-weight-bold mb-0">
+                                                No Records Found
+                                            </p>
+                                        </td>
+                                    </tr>
 
-                            </tbody>
+                                    {% endfor %}
 
-                        </table>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- MOBILE CARDS -->
+                        <div class="mobile-note-list">
+
+                            {% for object in notes %}
+
+                            <div class="mobile-note-card">
+
+                                <div class="mobile-note-title">
+                                    {{ object.task }}
+                                </div>
+
+                                <div class="mobile-note-info">
+                                    <span>Content</span>
+                                    <strong>{{ object.content }}</strong>
+                                </div>
+
+                                <div class="mobile-note-info">
+                                    <span>Created At</span>
+                                    <strong>{{ object.created_at }}</strong>
+                                </div>
+
+                                <div class="mobile-note-actions">
+
+                                    <a href="{% url 'note-update' object.id %}"
+                                       class="btn btn-primary btn-sm">
+                                        Edit
+                                    </a>
+
+                                    <a href="{% url 'note-delete' object.id %}"
+                                       class="btn btn-danger btn-sm">
+                                        Delete
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                            {% empty %}
+
+                            <div class="mobile-note-card text-center">
+                                <strong>No Records Found</strong>
+                            </div>
+
+                            {% endfor %}
+
+                        </div>
+
 
                         {% include 'includes/pagination.html' %}
 
@@ -113,5 +200,122 @@
 
     </div>
 </div>
+
+
+<style>
+
+/* Hidden on desktop */
+
+.mobile-note-controls,
+.mobile-note-list {
+    display: none;
+}
+
+
+/* Mobile only */
+
+@media (max-width: 991px) {
+
+    /* Hide desktop controls */
+    .desktop-note-controls {
+        display: none !important;
+    }
+
+    /* Hide desktop table */
+    .desktop-note-table {
+        display: none !important;
+    }
+
+    /* Mobile controls */
+    .mobile-note-controls {
+        display: block;
+        padding: 0 15px;
+    }
+
+    .mobile-search-row {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .mobile-search-row input {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .mobile-search-row button {
+        flex-shrink: 0;
+    }
+
+    .mobile-add-button {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+
+    /* Mobile cards */
+
+    .mobile-note-list {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .mobile-note-card {
+        background: #ffffff;
+        border: 1px solid #C8D9E2;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .mobile-note-title {
+        color: #334B63 !important;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 14px;
+        word-break: break-word;
+    }
+
+    .mobile-note-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 8px 0;
+        border-top: 1px solid #E4F7EE;
+    }
+
+    .mobile-note-info span {
+        color: #40566F !important;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    .mobile-note-info strong {
+        color: #334B63 !important;
+        font-size: 14px;
+        text-align: right;
+        word-break: break-word;
+    }
+
+    .mobile-note-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid #C8D9E2;
+    }
+
+    .mobile-note-actions a {
+        flex: 1;
+        text-align: center;
+    }
+
+}
+
+</style>
 
 {% endblock %}

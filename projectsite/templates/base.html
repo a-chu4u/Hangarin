@@ -13,9 +13,8 @@
           content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
     <title>{% block title %}Hangarin{% endblock %}</title>
-    
-    {% progressive_web_app_meta %}
 
+    {% progressive_web_app_meta %}
 
     <link rel="stylesheet"
           href="{% static 'css/bootstrap.min.css' %}">
@@ -32,19 +31,13 @@
         :root {
 
             --mint-mist: #E4F7EE;
-
             --pale-aqua: #C7E9ED;
-
             --periwinkle-blue: #B2CAED;
 
-
             --text-color: #40566F;
-
             --heading-color: #334B63;
 
-
             --hover-blue: #91B3E2;
-
             --border-color: #C8D9E2;
 
         }
@@ -58,7 +51,6 @@
         body {
 
             background-color: var(--mint-mist) !important;
-
             color: var(--text-color) !important;
 
         }
@@ -69,7 +61,6 @@
         .content {
 
             background-color: var(--mint-mist) !important;
-
             color: var(--text-color) !important;
 
         }
@@ -132,7 +123,6 @@
         .sidebar .nav-primary .nav-item > a:hover {
 
             background-color: var(--hover-blue) !important;
-
             border-radius: 6px;
 
         }
@@ -141,7 +131,6 @@
         .sidebar .nav-primary .nav-item.active > a {
 
             background-color: var(--periwinkle-blue) !important;
-
             border-radius: 6px;
 
         }
@@ -159,9 +148,7 @@
         .nav-link.text-white {
 
             background-color: var(--periwinkle-blue) !important;
-
             color: var(--heading-color) !important;
-
             border-radius: 6px;
 
         }
@@ -174,11 +161,8 @@
         .card {
 
             background-color: #FFFFFF !important;
-
             color: var(--text-color) !important;
-
             border: none;
-
             border-radius: 8px;
 
         }
@@ -187,9 +171,7 @@
         .card-header {
 
             background-color: #FFFFFF !important;
-
             color: var(--heading-color) !important;
-
             border-bottom: 1px solid var(--border-color);
 
         }
@@ -205,7 +187,6 @@
         .card-body {
 
             background-color: #FFFFFF !important;
-
             color: var(--text-color) !important;
 
         }
@@ -236,8 +217,6 @@
         }
 
 
-        /* Fix Atlantis white text */
-
         .text-white {
 
             color: var(--heading-color) !important;
@@ -245,12 +224,9 @@
         }
 
 
-        /* Dashboard statistic numbers */
-
         .card-body h2 {
 
             color: var(--heading-color) !important;
-
             font-weight: 600 !important;
 
         }
@@ -259,7 +235,6 @@
         .card-body h3 {
 
             color: var(--heading-color) !important;
-
             font-weight: 600 !important;
 
         }
@@ -268,7 +243,6 @@
         .card-body h4 {
 
             color: var(--heading-color) !important;
-
             font-weight: 500 !important;
 
         }
@@ -281,7 +255,6 @@
         .table {
 
             color: var(--text-color) !important;
-
             background-color: #FFFFFF;
 
         }
@@ -290,9 +263,7 @@
         .table thead th {
 
             background-color: var(--periwinkle-blue) !important;
-
             color: var(--heading-color) !important;
-
             border-color: var(--border-color) !important;
 
         }
@@ -315,7 +286,6 @@
         .table tbody td {
 
             color: var(--text-color) !important;
-
             border-color: var(--border-color) !important;
 
         }
@@ -329,11 +299,8 @@
         .btn-success {
 
             background-color: var(--periwinkle-blue) !important;
-
             border-color: var(--periwinkle-blue) !important;
-
             color: var(--heading-color) !important;
-
             box-shadow: none !important;
 
         }
@@ -343,9 +310,7 @@
         .btn-success:hover {
 
             background-color: var(--hover-blue) !important;
-
             border-color: var(--hover-blue) !important;
-
             color: var(--heading-color) !important;
 
         }
@@ -354,9 +319,7 @@
         .btn-secondary {
 
             background-color: var(--pale-aqua) !important;
-
             border-color: var(--pale-aqua) !important;
-
             color: var(--heading-color) !important;
 
         }
@@ -365,7 +328,6 @@
         .btn-secondary:hover {
 
             background-color: #B5DDE2 !important;
-
             border-color: #B5DDE2 !important;
 
         }
@@ -378,9 +340,7 @@
         .form-control {
 
             background-color: #FFFFFF !important;
-
             color: var(--text-color) !important;
-
             border-color: var(--periwinkle-blue) !important;
 
         }
@@ -451,9 +411,7 @@
         .pagination .page-item .page-link {
 
             background-color: #FFFFFF;
-
             color: var(--text-color);
-
             border-color: var(--periwinkle-blue);
 
         }
@@ -462,9 +420,7 @@
         .pagination .page-item.active .page-link {
 
             background-color: var(--periwinkle-blue);
-
             border-color: var(--periwinkle-blue);
-
             color: var(--heading-color);
 
         }
@@ -473,7 +429,6 @@
         .pagination .page-item .page-link:hover {
 
             background-color: var(--pale-aqua);
-
             color: var(--heading-color);
 
         }
@@ -487,7 +442,6 @@
         .badge-success {
 
             background-color: var(--periwinkle-blue) !important;
-
             color: var(--heading-color) !important;
 
         }
@@ -504,12 +458,249 @@
         }
 
 
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        #mobileMenuButton {
+
+            display: none;
+
+        }
+
+
+        @media (max-width: 991px) {
+
+            #mobileMenuButton {
+
+                display: flex !important;
+
+                position: fixed !important;
+
+                top: 10px !important;
+
+                left: 12px !important;
+
+                width: 42px !important;
+
+                height: 42px !important;
+
+                align-items: center !important;
+
+                justify-content: center !important;
+
+                background-color: #B2CAED !important;
+
+                color: #334B63 !important;
+
+                border: none !important;
+
+                border-radius: 6px !important;
+
+                font-size: 25px !important;
+
+                line-height: 1 !important;
+
+                z-index: 10001 !important;
+
+                padding: 0 !important;
+
+                box-shadow: none !important;
+
+            }
+
+
+            #mobileMenuButton:active {
+
+                background-color: #91B3E2 !important;
+
+            }
+
+
+            /* Mobile sidebar */
+
+            .sidebar {
+
+                position: fixed !important;
+
+                top: 0 !important;
+
+                left: 0 !important;
+
+                bottom: 0 !important;
+
+                width: 250px !important;
+
+                height: 100vh !important;
+
+                z-index: 10000 !important;
+
+                transform: translateX(-100%) !important;
+
+                transition: transform 0.25s ease-in-out !important;
+
+                background-color: #B2CAED !important;
+
+                box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15) !important;
+
+            }
+
+
+            /* Open sidebar */
+
+            body.mobile-sidebar-open .sidebar {
+
+                transform: translateX(0) !important;
+
+            }
+
+
+            .sidebar-wrapper {
+
+                height: 100% !important;
+
+                overflow-y: auto !important;
+
+            }
+
+
+            .sidebar-content {
+
+                min-height: 100% !important;
+
+            }
+
+
+            .sidebar .nav {
+
+                display: block !important;
+
+                padding-top: 60px !important;
+
+            }
+
+
+            .sidebar .nav-item {
+
+                display: block !important;
+
+                width: 100% !important;
+
+            }
+
+
+            .sidebar .nav-item a {
+
+                display: flex !important;
+
+                align-items: center !important;
+
+                width: 100% !important;
+
+                padding: 14px 20px !important;
+
+            }
+
+
+            .sidebar .nav-item a i {
+
+                width: 25px !important;
+
+                margin-right: 10px !important;
+
+            }
+
+
+            .sidebar .nav-item a p {
+
+                display: block !important;
+
+                margin: 0 !important;
+
+            }
+
+
+            /* Overlay */
+
+            body.mobile-sidebar-open::after {
+
+                content: "";
+
+                position: fixed;
+
+                top: 0;
+
+                left: 0;
+
+                right: 0;
+
+                bottom: 0;
+
+                background: rgba(0, 0, 0, 0.35);
+
+                z-index: 9999 !important;
+
+            }
+
+
+            /* Keep sidebar above overlay */
+
+            body.mobile-sidebar-open .sidebar {
+
+                z-index: 10000 !important;
+
+            }
+
+
+            .main-panel {
+
+                width: 100% !important;
+
+                margin-left: 0 !important;
+
+            }
+
+
+            /* Hide Atlantis mobile toggle */
+
+            .nav-toggle {
+
+                display: none !important;
+
+            }
+
+        }
+
+
+        @media (min-width: 992px) {
+
+            #mobileMenuButton {
+
+                display: none !important;
+
+            }
+
+        }
+
     </style>
 
 </head>
 
 
 <body data-background-color="light">
+
+
+<!-- =========================
+     CUSTOM MOBILE MENU BUTTON
+========================= -->
+
+<button id="mobileMenuButton"
+        type="button"
+        aria-label="Open menu">
+
+    ☰
+
+</button>
 
 
 <div class="wrapper">
@@ -557,7 +748,8 @@
 
                 <div class="nav-toggle">
 
-                    <button class="btn btn-toggle toggle-sidebar">
+                    <button type="button"
+                            class="btn btn-toggle toggle-sidebar">
 
                         <i class="icon-menu"></i>
 
@@ -566,7 +758,8 @@
                 </div>
 
 
-                <button class="topbar-toggler more">
+                <button type="button"
+                        class="topbar-toggler more">
 
                     <i class="icon-options-vertical"></i>
 
@@ -678,7 +871,7 @@
                     </li>
 
 
-                        <li class="nav-item">
+                    <li class="nav-item">
 
                         <a href="{% url 'note-list' %}">
 
@@ -689,6 +882,7 @@
                         </a>
 
                     </li>
+
 
                     <li class="nav-item">
 
@@ -714,7 +908,6 @@
                         </a>
 
                     </li>
-
 
 
                     <li class="nav-item">
@@ -746,17 +939,19 @@
 
     <div class="main-panel">
 
-
         {% block content %}
 
         {% endblock %}
-
 
     </div>
 
 
 </div>
 
+
+<!-- =========================
+     SCRIPTS
+========================= -->
 
 <script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
 
@@ -765,6 +960,112 @@
 <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
 
 <script src="{% static 'js/atlantis.min.js' %}"></script>
+
+
+<!-- =========================
+     MOBILE SIDEBAR SCRIPT
+========================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuButton");
+
+    const sidebar =
+        document.querySelector(".sidebar");
+
+
+    if (!menuButton || !sidebar) {
+
+        return;
+
+    }
+
+
+    /* Open / close menu */
+
+    menuButton.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        event.stopPropagation();
+
+        document.body.classList.toggle(
+            "mobile-sidebar-open"
+        );
+
+    });
+
+
+    /* Close menu when clicking outside */
+
+    document.addEventListener("click", function (event) {
+
+        if (window.innerWidth <= 991) {
+
+            if (
+                document.body.classList.contains(
+                    "mobile-sidebar-open"
+                ) &&
+                !sidebar.contains(event.target) &&
+                !menuButton.contains(event.target)
+            ) {
+
+                document.body.classList.remove(
+                    "mobile-sidebar-open"
+                );
+
+            }
+
+        }
+
+    });
+
+
+    /* Close menu after selecting a page */
+
+    const sidebarLinks =
+        document.querySelectorAll(
+            ".sidebar .nav-item a"
+        );
+
+
+    sidebarLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            if (window.innerWidth <= 991) {
+
+                document.body.classList.remove(
+                    "mobile-sidebar-open"
+                );
+
+            }
+
+        });
+
+    });
+
+
+    /* Reset when switching to desktop */
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 991) {
+
+            document.body.classList.remove(
+                "mobile-sidebar-open"
+            );
+
+        }
+
+    });
+
+});
+
+</script>
 
 
 </body>

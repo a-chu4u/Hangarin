@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'pwa',
 ]
 
-SITE_ID = 4
+SITE_ID = 3
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -58,7 +58,6 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 
 ACCOUNT_LOGIN_METHODS = {"username", "email"}
@@ -165,6 +164,8 @@ MAILERS = {
 # --- Progressive Web App Settings ---
 PWA_APP_NAME = 'Hangarin'
 
+PWA_APP_ID = '/'
+
 PWA_APP_DESCRIPTION = "A Progressive Web App version of Hangarin"
 
 PWA_APP_THEME_COLOR = '#B2CAED'
@@ -201,6 +202,21 @@ PWA_APP_ICONS_APPLE = [
         'src': '/static/img/icon-512.png',
         'sizes': '512x512'
     }
+]
+
+
+PWA_APP_SCREENSHOTS = [
+    {
+        'src': '/static/img/phone_ss.png',
+        'sizes': '946x1718',
+        'type': 'image/png',
+    },
+    {
+        'src': '/static/img/laptop_ss.png',
+        'sizes': '1897x899',
+        'type': 'image/png',
+        'form_factor': 'wide',
+    },
 ]
 
 PWA_APP_DIR = 'ltr'

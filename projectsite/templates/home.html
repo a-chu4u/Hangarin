@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
 {% block content %}
+
+<style>
+    .dashboard-card,
+    .dashboard-card.card,
+    .dashboard-card.card-stats {
+        border-radius: 20px !important;
+        overflow: hidden !important;
+    }
+
+    .dashboard-card .card-body {
+        border-radius: 20px !important;
+    }
+</style>
 
 <div class="content d-flex align-items-center" style="min-height: calc(100vh - 80px);">
 
@@ -14,7 +28,7 @@
         <div class="row justify-content-center">
 
             <div class="col-md-3">
-                <div class="card card-stats card-warning">
+                <div class="card card-stats card-warning dashboard-card">
                     <div class="card-body text-center">
                         <p class="card-category">Total Tasks</p>
                         <h4 class="card-title">{{ total_tasks }}</h4>
@@ -23,7 +37,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="card card-stats card-success">
+                <div class="card card-stats card-success dashboard-card">
                     <div class="card-body text-center">
                         <p class="card-category">Pending</p>
                         <h4 class="card-title">{{ pending_tasks }}</h4>
@@ -32,7 +46,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="card card-stats card-danger">
+                <div class="card card-stats card-danger dashboard-card">
                     <div class="card-body text-center">
                         <p class="card-category">Completed</p>
                         <h4 class="card-title">{{ completed_tasks }}</h4>
@@ -41,7 +55,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="card card-stats card-primary">
+                <div class="card card-stats card-primary dashboard-card">
                     <div class="card-body text-center">
                         <p class="card-category">SubTasks</p>
                         <h4 class="card-title">{{ total_subtasks }}</h4>
@@ -55,7 +69,7 @@
 
             <div class="col-md-12">
 
-                <div class="card">
+                <div class="card dashboard-card">
 
                     <div class="card-body text-center">
 
